@@ -1,0 +1,321 @@
+{
+  "version": 1,
+  "plugins": [
+    {
+      "domain": "authentik",
+      "name": "Authentik",
+      "version": "0.1.0",
+      "description": "Identity & SSO \u2014 users, applications, proxy providers, outposts",
+      "integration_type": "hub",
+      "documentation": "https://docs.goauthentik.io/",
+      "credentials": [
+        {
+          "key": "token",
+          "label": "API Token",
+          "secret": true,
+          "required": true
+        }
+      ],
+      "config": [
+        {
+          "key": "url",
+          "label": "Authentik URL",
+          "required": true,
+          "placeholder": "https://auth.example.com"
+        }
+      ],
+      "capabilities": {
+        "resources": [
+          "user",
+          "application",
+          "provider",
+          "outpost"
+        ],
+        "actions": [
+          "create-provider",
+          "create-application"
+        ],
+        "cards": [
+          "resource-list",
+          "user-list"
+        ]
+      },
+      "polling_interval_seconds": 300,
+      "path": "authentik"
+    },
+    {
+      "domain": "crowdsec",
+      "name": "CrowdSec",
+      "version": "0.1.0",
+      "description": "Collaborative security \u2014 threat intelligence, bouncers, decisions",
+      "integration_type": "service",
+      "documentation": "https://docs.crowdsec.net/",
+      "credentials": [
+        {
+          "key": "api_key",
+          "label": "Local API Key",
+          "secret": true,
+          "required": true
+        }
+      ],
+      "config": [
+        {
+          "key": "url",
+          "label": "LAPI URL",
+          "required": true,
+          "placeholder": "http://localhost:8080"
+        }
+      ],
+      "capabilities": {
+        "resources": [
+          "decision",
+          "bouncer"
+        ],
+        "actions": [
+          "add-decision",
+          "delete-decision"
+        ],
+        "cards": [
+          "decision-list",
+          "bouncer-status"
+        ]
+      },
+      "polling_interval_seconds": 120,
+      "path": "crowdsec"
+    },
+    {
+      "domain": "desec",
+      "name": "deSEC",
+      "version": "0.1.0",
+      "description": "DNS management \u2014 domains, records, DDNS, token management",
+      "integration_type": "hub",
+      "documentation": "https://desec.readthedocs.io/",
+      "credentials": [
+        {
+          "key": "token",
+          "label": "API Token",
+          "secret": true,
+          "required": true,
+          "placeholder": "deSEC API token",
+          "help_url": "https://desec.io/tokens"
+        }
+      ],
+      "config": [
+        {
+          "key": "domain",
+          "label": "Default Domain",
+          "required": false,
+          "placeholder": "example.dedyn.io"
+        }
+      ],
+      "capabilities": {
+        "resources": [
+          "domain"
+        ],
+        "actions": [
+          "create-record",
+          "edit-record",
+          "delete-record",
+          "create-token",
+          "ddns-update"
+        ],
+        "cards": [
+          "resource-list",
+          "domain-card",
+          "record-editor"
+        ]
+      },
+      "polling_interval_seconds": 300,
+      "path": "desec"
+    },
+    {
+      "domain": "hetzner",
+      "name": "Hetzner Cloud",
+      "version": "0.1.0",
+      "description": "Cloud servers, volumes, firewalls, snapshots, DNS, load balancers",
+      "integration_type": "hub",
+      "documentation": "https://docs.hetzner.cloud/",
+      "credentials": [
+        {
+          "key": "token",
+          "label": "API Token",
+          "secret": true,
+          "required": true,
+          "placeholder": "Bearer token from console.hetzner.cloud",
+          "help_url": "https://console.hetzner.cloud/"
+        }
+      ],
+      "config": [],
+      "capabilities": {
+        "resources": [
+          "server",
+          "volume"
+        ],
+        "actions": [
+          "create",
+          "delete",
+          "rebuild",
+          "snapshot"
+        ],
+        "cards": [
+          "resource-list",
+          "server-card"
+        ]
+      },
+      "polling_interval_seconds": 60,
+      "path": "hetzner"
+    },
+    {
+      "domain": "prometheus",
+      "name": "Prometheus",
+      "version": "0.1.0",
+      "description": "Metrics and alerting \u2014 PromQL queries, alert rules, scrape targets",
+      "integration_type": "service",
+      "documentation": "https://prometheus.io/docs/",
+      "credentials": [],
+      "config": [
+        {
+          "key": "url",
+          "label": "Prometheus URL",
+          "required": true,
+          "placeholder": "http://prometheus:9090"
+        }
+      ],
+      "capabilities": {
+        "resources": [
+          "alert",
+          "target"
+        ],
+        "actions": [
+          "query",
+          "silence-alert"
+        ],
+        "cards": [
+          "alert-list",
+          "metric-chart",
+          "target-status"
+        ]
+      },
+      "polling_interval_seconds": 60,
+      "path": "prometheus"
+    },
+    {
+      "domain": "proxmox",
+      "name": "Proxmox VE",
+      "version": "0.1.0",
+      "description": "Virtual machines, containers, nodes, storage, networking",
+      "integration_type": "hub",
+      "documentation": "https://pve.proxmox.com/wiki/Main_Page",
+      "credentials": [
+        {
+          "key": "token",
+          "label": "API Token (recommended)",
+          "secret": true,
+          "required": false,
+          "placeholder": "USER!TOKENID=SECRET",
+          "help_url": "https://pve.proxmox.com/wiki/User_Management#pveum_tokens"
+        },
+        {
+          "key": "username",
+          "label": "Username (alternative)",
+          "secret": false,
+          "required": false,
+          "placeholder": "root@pam or user@pam"
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "secret": true,
+          "required": false,
+          "placeholder": "PVE password"
+        }
+      ],
+      "config": [
+        {
+          "key": "url",
+          "label": "Host URL",
+          "required": true,
+          "placeholder": "https://pve-node:8006"
+        },
+        {
+          "key": "trellis_mode",
+          "label": "Trellis Enhanced Features",
+          "required": false,
+          "placeholder": "auto | on | off (default: auto-detect)"
+        }
+      ],
+      "capabilities": {
+        "resources": [
+          "vm",
+          "ct",
+          "node",
+          "storage"
+        ],
+        "actions": [
+          "start",
+          "stop",
+          "shutdown",
+          "reboot",
+          "reset",
+          "migrate",
+          "clone",
+          "snapshot",
+          "backup",
+          "create",
+          "delete"
+        ],
+        "cards": [
+          "resource-list",
+          "resource-card",
+          "node-status"
+        ]
+      },
+      "polling_interval_seconds": 30,
+      "path": "proxmox"
+    },
+    {
+      "domain": "tailscale",
+      "name": "Tailscale",
+      "version": "0.1.0",
+      "description": "Mesh VPN \u2014 devices, ACLs, DNS, auth keys, exit nodes",
+      "integration_type": "hub",
+      "documentation": "https://tailscale.com/kb/",
+      "credentials": [
+        {
+          "key": "api_key",
+          "label": "API Key",
+          "secret": true,
+          "required": true,
+          "placeholder": "tskey-api-...",
+          "help_url": "https://login.tailscale.com/admin/settings/keys"
+        }
+      ],
+      "config": [
+        {
+          "key": "tailnet",
+          "label": "Tailnet",
+          "required": true,
+          "placeholder": "example.com or org slug"
+        }
+      ],
+      "capabilities": {
+        "resources": [
+          "device"
+        ],
+        "actions": [
+          "authorize",
+          "remove",
+          "set-tags",
+          "create-key"
+        ],
+        "cards": [
+          "resource-list",
+          "device-card",
+          "mesh-map"
+        ]
+      },
+      "polling_interval_seconds": 60,
+      "path": "tailscale"
+    }
+  ]
+}
