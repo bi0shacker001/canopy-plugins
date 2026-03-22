@@ -1,0 +1,36 @@
+{
+  "domain": "desec",
+  "name": "deSEC",
+  "version": "0.1.0",
+  "description": "DNS management — domains, records, DDNS, token management",
+  "integration_type": "hub",
+  "documentation": "https://desec.readthedocs.io/",
+
+  "credentials": [
+    {
+      "key": "token",
+      "label": "API Token",
+      "secret": true,
+      "required": true,
+      "placeholder": "deSEC API token",
+      "help_url": "https://desec.io/tokens"
+    }
+  ],
+
+  "config": [
+    {
+      "key": "domain",
+      "label": "Default Domain",
+      "required": false,
+      "placeholder": "example.dedyn.io"
+    }
+  ],
+
+  "capabilities": {
+    "resources": ["domain"],
+    "actions": ["create-record", "edit-record", "delete-record", "create-token", "ddns-update"],
+    "cards": ["resource-list", "domain-card", "record-editor"]
+  },
+
+  "polling_interval_seconds": 300
+}

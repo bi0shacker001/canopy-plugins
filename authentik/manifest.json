@@ -1,0 +1,16 @@
+{
+  "domain": "authentik",
+  "name": "Authentik",
+  "version": "0.1.0",
+  "description": "Identity & SSO — users, applications, proxy providers, outposts",
+  "integration_type": "hub",
+  "documentation": "https://docs.goauthentik.io/",
+  "credentials": [
+    { "key": "token", "label": "API Token", "secret": true, "required": true }
+  ],
+  "config": [
+    { "key": "url", "label": "Authentik URL", "required": true, "placeholder": "https://auth.example.com" }
+  ],
+  "capabilities": { "resources": ["user", "application", "provider", "outpost"], "actions": ["create-provider", "create-application"], "cards": ["resource-list", "user-list"] },
+  "polling_interval_seconds": 300
+}

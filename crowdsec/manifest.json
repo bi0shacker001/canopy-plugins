@@ -1,0 +1,16 @@
+{
+  "domain": "crowdsec",
+  "name": "CrowdSec",
+  "version": "0.1.0",
+  "description": "Collaborative security — threat intelligence, bouncers, decisions",
+  "integration_type": "service",
+  "documentation": "https://docs.crowdsec.net/",
+  "credentials": [
+    { "key": "api_key", "label": "Local API Key", "secret": true, "required": true }
+  ],
+  "config": [
+    { "key": "url", "label": "LAPI URL", "required": true, "placeholder": "http://localhost:8080" }
+  ],
+  "capabilities": { "resources": ["decision", "bouncer"], "actions": ["add-decision", "delete-decision"], "cards": ["decision-list", "bouncer-status"] },
+  "polling_interval_seconds": 120
+}

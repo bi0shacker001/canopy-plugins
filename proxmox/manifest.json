@@ -1,0 +1,56 @@
+{
+  "domain": "proxmox",
+  "name": "Proxmox VE",
+  "version": "0.1.0",
+  "description": "Virtual machines, containers, nodes, storage, networking",
+  "integration_type": "hub",
+  "documentation": "https://pve.proxmox.com/wiki/Main_Page",
+
+  "credentials": [
+    {
+      "key": "token",
+      "label": "API Token (recommended)",
+      "secret": true,
+      "required": false,
+      "placeholder": "USER!TOKENID=SECRET",
+      "help_url": "https://pve.proxmox.com/wiki/User_Management#pveum_tokens"
+    },
+    {
+      "key": "username",
+      "label": "Username (alternative)",
+      "secret": false,
+      "required": false,
+      "placeholder": "root@pam or user@pam"
+    },
+    {
+      "key": "password",
+      "label": "Password",
+      "secret": true,
+      "required": false,
+      "placeholder": "PVE password"
+    }
+  ],
+
+  "config": [
+    {
+      "key": "url",
+      "label": "Host URL",
+      "required": true,
+      "placeholder": "https://pve-node:8006"
+    },
+    {
+      "key": "trellis_mode",
+      "label": "Trellis Enhanced Features",
+      "required": false,
+      "placeholder": "auto | on | off (default: auto-detect)"
+    }
+  ],
+
+  "capabilities": {
+    "resources": ["vm", "ct", "node", "storage"],
+    "actions": ["start", "stop", "shutdown", "reboot", "reset", "migrate", "clone", "snapshot", "backup", "create", "delete"],
+    "cards": ["resource-list", "resource-card", "node-status"]
+  },
+
+  "polling_interval_seconds": 30
+}

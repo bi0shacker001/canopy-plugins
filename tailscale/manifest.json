@@ -1,0 +1,36 @@
+{
+  "domain": "tailscale",
+  "name": "Tailscale",
+  "version": "0.1.0",
+  "description": "Mesh VPN — devices, ACLs, DNS, auth keys, exit nodes",
+  "integration_type": "hub",
+  "documentation": "https://tailscale.com/kb/",
+
+  "credentials": [
+    {
+      "key": "api_key",
+      "label": "API Key",
+      "secret": true,
+      "required": true,
+      "placeholder": "tskey-api-...",
+      "help_url": "https://login.tailscale.com/admin/settings/keys"
+    }
+  ],
+
+  "config": [
+    {
+      "key": "tailnet",
+      "label": "Tailnet",
+      "required": true,
+      "placeholder": "example.com or org slug"
+    }
+  ],
+
+  "capabilities": {
+    "resources": ["device"],
+    "actions": ["authorize", "remove", "set-tags", "create-key"],
+    "cards": ["resource-list", "device-card", "mesh-map"]
+  },
+
+  "polling_interval_seconds": 60
+}

@@ -1,0 +1,14 @@
+{
+  "domain": "hetzner",
+  "name": "Hetzner Cloud",
+  "version": "0.1.0",
+  "description": "Cloud servers, volumes, firewalls, snapshots, DNS, load balancers",
+  "integration_type": "hub",
+  "documentation": "https://docs.hetzner.cloud/",
+  "credentials": [
+    { "key": "token", "label": "API Token", "secret": true, "required": true, "placeholder": "Bearer token from console.hetzner.cloud", "help_url": "https://console.hetzner.cloud/" }
+  ],
+  "config": [],
+  "capabilities": { "resources": ["server", "volume"], "actions": ["create", "delete", "rebuild", "snapshot"], "cards": ["resource-list", "server-card"] },
+  "polling_interval_seconds": 60
+}

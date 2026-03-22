@@ -1,0 +1,27 @@
+{
+  "domain": "prometheus",
+  "name": "Prometheus",
+  "version": "0.1.0",
+  "description": "Metrics and alerting — PromQL queries, alert rules, scrape targets",
+  "integration_type": "service",
+  "documentation": "https://prometheus.io/docs/",
+
+  "credentials": [],
+
+  "config": [
+    {
+      "key": "url",
+      "label": "Prometheus URL",
+      "required": true,
+      "placeholder": "http://prometheus:9090"
+    }
+  ],
+
+  "capabilities": {
+    "resources": ["alert", "target"],
+    "actions": ["query", "silence-alert"],
+    "cards": ["alert-list", "metric-chart", "target-status"]
+  },
+
+  "polling_interval_seconds": 60
+}
